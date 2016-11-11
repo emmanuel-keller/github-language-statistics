@@ -4,9 +4,16 @@
 
 An active repository is a repository which has been created or updated.
  
-Here are the current results from 2014 to 2016 (until october)
+## October 2016
 
+![Statistiques](stats-oct-2016.png)
+
+## From 2014 to 2016 (linear)
 ![Statistiques](statsv12.png)
+
+## Last 12 months (log)
+
+![Statistiques](stats-last-year-log.png)
 
 ### 2014 statistics
 

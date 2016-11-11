@@ -1,6 +1,8 @@
 # Number of active repositories in GitHub
 
 **Per language** and **per month**
+
+An active repository is a repository which has been created or udated.
  
 Here are the current results from 2014 to 2016 (until october)
 
@@ -52,4 +54,4 @@ http://localhost/{year}
 
 A CSV file is returned.
 
-The program is slow because to not exceed the current rate limit (10 requests/minute)
+The program wait 7 seconds between each request to not exceed the current GitHub rate limit (10 requests/minute)

@@ -27,16 +27,24 @@ import (
 	"time"
 )
 
-var languages = []string{"C", "C++", "C#", "Java", "Javascript", "Go", "Objective C", "Perl", "Php", "Python", "Ruby", "Rust", "Scala", "Swift"}
+var languages = []string{"C", "C++", "C#", "Clojure", "Go", "Java", "Javascript", "Objective C", "Perl", "Php", "Python", "Ruby", "Rust", "Scala", "Swift"}
 
 func CountProjects(language string, year int, month int) (int, error) {
 
 	// The public GH API rate is 10r eq/minutes
 	time.Sleep(7 * time.Second)
 
-	const GhEndPoint = "https://api.github.com/search/repositories?q=language:"
+	const GhEndPoint = "https://api.github.com/search/repositories?q=stars:>0+forks:>0+size:>10+"
 
-	u := GhEndPoint + url.QueryEscape(language) + "+pushed:" + fmt.Sprintf("%04d-%02d", year, month)
+	u := GhEndPoint + "language:" + url.QueryEscape(language)
+
+	startMonth := time.Date(year, time.Month(month), 1, 0, 0, 0, 0, time.UTC)
+	endMonth := startMonth.AddDate(0, 1, -1)
+	endMonth = time.Date(endMonth.Year(), endMonth.Month(), endMonth.Day(), 23, 59, 59, 0, time.UTC)
+
+	u += "+pushed:" + fmt.Sprintf("%04d-%02d-01", year, month)
+	u += ".." + fmt.Sprintf("%04d-%02d-%02d", year, month, endMonth.Day())
+	log.Println(u)
 	resp, err := http.Get(u)
 	if err != nil {
 		return 0, err
@@ -88,7 +96,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			log.Printf("%04d-%02d\t%s\t%d", year, month, language, count)
-			md += " " + strconv.Itoa(count) + " |"
+			md += " " + fmt.Sprintf("%6s", strconv.Itoa(count)) + " |"
 			fmt.Fprintf(w, "\t%d", count)
 		}
 		log.Printf(md)

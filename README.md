@@ -1,10 +1,12 @@
-# Number of active repositories
+# Number of active repositories in GitHub
 
 This little GO program requests the
 [GitHub API](https://developer.github.com/v3/search/#search-repositories)
-to extract the **per language ** and **per month** number of active repositories.
+to extract the **per language** and **per month** number of active repositories.
  
-Here are the current results for 2015 and 2016 (until october).
+Here are the current results from 2014 to 2016 (until october).
+
+![Statistiques](stats.png)
 
 ## 2014 statistics
 

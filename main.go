@@ -63,8 +63,6 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/csv")
 	w.WriteHeader(http.StatusOK)
 
-	var results = map[string]int{}
-
 	for _, language := range languages {
 		fmt.Fprint(w, language)
 		for month := 1; month <= 12; month++ {
@@ -76,10 +74,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 			log.Printf("%04d-%02d\t%s\t%d", year, month, language, count)
 			fmt.Fprintf(w, "\t%d", count)
 		}
-	}
-
-	if err := json.NewEncoder(w).Encode(results); err != nil {
-		panic(err)
+		fmt.Fprintln(w)
 	}
 }
 

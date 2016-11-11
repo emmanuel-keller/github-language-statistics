@@ -27,7 +27,7 @@ import (
 	"time"
 )
 
-var languages = []string{"C++", "C#", "Java", "Javascript", "Go", "Rust", "Swift"}
+var languages = []string{"C", "C++", "C#", "Java", "Javascript", "Go", "Objective C", "Perl", "Php", "Python", "Ruby", "Rust", "Scala", "Swift"}
 
 func CountProjects(language string, year int, month int) (int, error) {
 

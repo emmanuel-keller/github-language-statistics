@@ -27,7 +27,7 @@ import (
 	"time"
 )
 
-var languages = []string{"C++", "Java", "Go", "Rust", "Swift"}
+var languages = []string{"C++", "C#", "Java", "Javascript", "Go", "Rust", "Swift"}
 
 func CountProjects(language string, year int, month int) (int, error) {
 
@@ -79,6 +79,7 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 
 	for _, language := range languages {
+		var md string = language + " |"
 		fmt.Fprint(w, language)
 		for month := 1; month <= 12; month++ {
 			count, err := CountProjects(language, year, month)
@@ -87,8 +88,10 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 			log.Printf("%04d-%02d\t%s\t%d", year, month, language, count)
+			md += " " + strconv.Itoa(count) + " |"
 			fmt.Fprintf(w, "\t%d", count)
 		}
+		log.Printf(md)
 		fmt.Fprintln(w)
 	}
 }

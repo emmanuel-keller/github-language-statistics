@@ -1,14 +1,12 @@
 # Number of active repositories in GitHub
 
-This little GO program requests the
-[GitHub API](https://developer.github.com/v3/search/#search-repositories)
-to extract the **per language** and **per month** number of active repositories.
+**Per language** and **per month**
  
-Here are the current results from 2014 to 2016 (until october).
+Here are the current results from 2014 to 2016 (until october)
 
 ![Statistiques](stats.png)
 
-## 2014 statistics
+### 2014 statistics
 
 | Language | Jan   | Feb   | Mar   | Apr   | May   | Jun   | Jul   | Aug   | Sep   | Oct   | Nov   | Dec   |
 | :---     |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |
@@ -18,7 +16,7 @@ Here are the current results from 2014 to 2016 (until october).
 | Rust     |   112 |    80 |    77 |   100 |   124 |   117 |   169 |   185 |   146 |   238 |   303 |   313 |
 | Swift    |     0 |     0 |     0 |     0 |     0 |  1005 |   942 |  1077 |  2343 |  2777 |  2512 |  2344 |
 
-## 2015 statistics
+### 2015 statistics
 
 | Language | Jan   | Feb   | Mar   | Apr   | May   | Jun   | Jul   | Aug   | Sep   | Oct   | Nov   | Dec   |
 | :---     |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |  ---: |
@@ -28,7 +26,7 @@ Here are the current results from 2014 to 2016 (until october).
 | Rust     |   423 |   336 |   399 |   421 |   747 |   612 |   609 |   592 |   616 |   600 |   625 |   717 |
 | Swift    |  2864 |  3079 |  3699 |  4242 |  4252 |  4542 |  4362 |  4376 |  5256 |  6511 |  6753 |  7366 |
 
-## 2016 statistics
+### 2016 statistics
 
 | Language | Jan   | Feb   | Mar    | Apr    | May    | Jun   | Jul   | Aug    | Sep    | Oct    | Nov   | Dec   |
 | :---     |  ---: |  ---: |   ---: |   ---: |   ---: |  ---: |  ---: |   ---: |   ---: |   ---: |  ---: |  ---: |
@@ -37,3 +35,21 @@ Here are the current results from 2014 to 2016 (until october).
 | Go       |  5044 |  5077 |   6222 |   6233 |   6377 |  6354 |  6692 |   8076 |   9309 |  11895 |       |       |
 | Rust     |   925 |   826 |   1065 |   1063 |   1285 |  1323 |  1285 |   1568 |   1755 |   2495 |       |       |
 | Swift    |  8377 |  9948 |  10328 |   9846 |  10042 | 10403 | 10474 |  10832 |  13832 |  13832 |       |       |
+
+## The Go program
+
+If you want to fork or reuse this program, here are some useful informations.
+
+This little GO program requests the
+[GitHub API](https://developer.github.com/v3/search/#search-repositories)
+
+A typical request for one language for one month is:
+https://api.github.com/search/repositories?q=language%3AC%2B%2B%20pushed%3A2016-11
+
+The program exposes the following resource:
+
+http://localhost/{year}
+
+A CSV file is returned.
+
+The program is slow because to not exceed the current rate limit (10 requests/minute)

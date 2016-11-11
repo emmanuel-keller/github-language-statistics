@@ -2,7 +2,7 @@
 
 **Per language** and **per month**
 
-An active repository is a repository which has been created or udated.
+An active repository is a repository which has been created or updated.
  
 Here are the current results from 2014 to 2016 (until october)
 

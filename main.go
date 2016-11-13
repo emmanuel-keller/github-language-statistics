@@ -27,7 +27,8 @@ import (
 	"time"
 )
 
-var languages = []string{"C", "C++", "C#", "Clojure", "Go", "Java", "Javascript", "Objective C", "Perl", "Php", "Python", "Ruby", "Rust", "Scala", "Swift"}
+//var languages = []string{"C", "C++", "C#", "Clojure", "Go", "Haskell", "Java", "Javascript", "Objective C", "Perl", "Php", "Python", "Ruby", "Rust", "Scala", "Swift"}
+var languages = []string{"Haskell", "Objective C"}
 
 func CountProjects(language string, year int, month int) (int, error) {
 
@@ -36,7 +37,7 @@ func CountProjects(language string, year int, month int) (int, error) {
 
 	const GhEndPoint = "https://api.github.com/search/repositories?q=stars:>0+forks:>0+size:>10+"
 
-	u := GhEndPoint + "language:" + url.QueryEscape(language)
+	u := GhEndPoint + "language:" + url.QueryEscape("\"" + language + "\"")
 
 	startMonth := time.Date(year, time.Month(month), 1, 0, 0, 0, 0, time.UTC)
 	endMonth := startMonth.AddDate(0, 1, -1)
@@ -75,29 +76,23 @@ func CountProjects(language string, year int, month int) (int, error) {
 
 func MainHandler(w http.ResponseWriter, r *http.Request) {
 
-	vars := mux.Vars(r)
-
-	year, err := strconv.Atoi(vars["year"])
-	if err != nil {
-		http.Error(w, vars["year"] + " is not a numeric value", http.StatusNotAcceptable)
-		return
-	}
-
 	w.Header().Set("Content-Type", "text/csv")
 	w.WriteHeader(http.StatusOK)
 
 	for _, language := range languages {
 		var md string = language + " |"
 		fmt.Fprint(w, language)
-		for month := 1; month <= 12; month++ {
-			count, err := CountProjects(language, year, month)
-			if err != nil {
-				http.Error(w, "Error on language " + language + " " + err.Error(), http.StatusNotAcceptable)
-				return
+		for year := 2014; year <= 2016; year++ {
+			for month := 1; month <= 12; month++ {
+				count, err := CountProjects(language, year, month)
+				if err != nil {
+					http.Error(w, "Error on language " + language + " " + err.Error(), http.StatusNotAcceptable)
+					return
+				}
+				log.Printf("%04d-%02d\t%s\t%d", year, month, language, count)
+				md += " " + fmt.Sprintf("%6s", strconv.Itoa(count)) + " |"
+				fmt.Fprintf(w, "\t%d", count)
 			}
-			log.Printf("%04d-%02d\t%s\t%d", year, month, language, count)
-			md += " " + fmt.Sprintf("%6s", strconv.Itoa(count)) + " |"
-			fmt.Fprintf(w, "\t%d", count)
 		}
 		log.Printf(md)
 		fmt.Fprintln(w)
@@ -106,6 +101,6 @@ func MainHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/{year}", MainHandler)
+	r.HandleFunc("/", MainHandler)
 	log.Fatal(http.ListenAndServe(":8000", r))
 }

@@ -13,7 +13,7 @@ An active repository should meet this requirements:
 ![Statistiques](stats-2016-10.png)
 
 ## From 2014 to 2016
-![Statistiques](stats-2014-01_2016-10.png)
+![Statistiques](stats_2014-01_2016-10.png)
 
 ### 2014 statistics
 

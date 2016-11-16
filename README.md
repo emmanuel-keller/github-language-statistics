@@ -12,10 +12,15 @@ An active repository should meet this requirements:
 
 ![Statistiques](stats-2016-10.png)
 
-## From 2014 to 2016
+## Emerging language
+
+![Statistiques](new_lang_2014-01_2016-10.png)
+
+## All languages
+
 ![Statistiques](stats_2014-01_2016-10.png)
 
-### 2014 statistics
+### 2014 data
 
 | Language    | Jan    | Feb    | Mar    | Apr    | May    | Jun    | Jul    | Aug    | Sep    | Oct    | Nov    | Dec    |
 | :---        |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |
@@ -36,7 +41,7 @@ An active repository should meet this requirements:
 | Scala       |    110 |     85 |     99 |    116 |    113 |    117 |    103 |    123 |    117 |    113 |    137 |    131 |
 | Swift       |      0 |      0 |      0 |      0 |      0 |    131 |    107 |    111 |    155 |    145 |    155 |    143 |
 
-### 2015 statistics
+### 2015 data
 
 | Language    | Jan    | Feb    | Mar    | Apr    | May    | Jun    | Jul    | Aug    | Sep    | Oct    | Nov    | Dec    |
 | :---        |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |
@@ -57,7 +62,7 @@ An active repository should meet this requirements:
 | Scala       |    151 |    151 |    196 |    184 |    163 |    165 |    186 |    198 |    182 |    205 |    134 |    188 |
 | Swift       |    129 |    131 |    161 |    242 |    240 |    253 |    233 |    264 |    322 |    431 |    343 |    341 |
 
-### 2016 statistics
+### 2016 data
 
 | Language    | Jan    |  Feb   | Mar    | Apr    | May    | Jun    | Jul    | Aug    | Sep    | Oct    | Nov    | Dec    |
 | :---        |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |   ---: |

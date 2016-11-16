@@ -12,7 +12,7 @@ An active repository should meet this requirements:
 
 ![Statistiques](stats-2016-10.png)
 
-## Emerging language
+## Emerging languages
 
 ![Statistiques](new_lang_2014-01_2016-10.png)
 

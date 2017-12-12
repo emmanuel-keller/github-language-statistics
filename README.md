@@ -95,8 +95,8 @@ https://api.github.com/search/repositories?q=stars:>0+forks:>0+size:>10+language
 
 The program exposes the following resource:
 
-http://localhost/
+http://localhost:8000/
 
 A CSV file is returned.
 
-The program wait 7 seconds between each request to not exceed the current GitHub rate limit (10 requests/minute)
+The program wait 7 seconds between each request to not exceed the current [GitHub rate limit](https://developer.github.com/v3/search/#rate-limit) (10 requests/minute)
